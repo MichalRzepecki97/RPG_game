@@ -19,6 +19,7 @@ public class Display {
         createDisplay();
 
     }
+
     private void createDisplay(){
         frame = new JFrame(Title);
         frame.setSize(Width,Height);
@@ -35,5 +36,9 @@ public class Display {
 
         frame.add(canvas);
         frame.pack();
+
+    }
+    public Canvas getCanvas() {
+        return canvas;
     }
 }
