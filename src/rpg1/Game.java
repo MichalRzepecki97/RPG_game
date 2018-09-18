@@ -1,5 +1,7 @@
 package rpg1;
 
+import rpg1.gfx.Assets;
+import rpg1.gfx.ImageLoader;
 import rpg1.gfx.SpriteSheet;
 
 import java.awt.*;
@@ -17,11 +19,6 @@ public class Game implements Runnable {
     private BufferStrategy bs;
     private Graphics g;
 
-    private BufferedImage test;
-    private SpriteSheet sheet;
-
-
-
     public Game( String Title, int Width, int Height){
         this.Height = Height;
         this.Width = Width;
@@ -30,8 +27,7 @@ public class Game implements Runnable {
 
     private void init(){
         display = new Display(Title,Width,Height);
-        //test = ImageLoader.loadImage("/textures/nazwa");
-        sheet = new SpriteSheet(test);
+        Assets.init();
     }
     private void tick(){
 
@@ -46,10 +42,8 @@ public class Game implements Runnable {
         //Clear screen
         g.clearRect(0,0,Width,Height);
         //draw
-        g.drawImage(sheet.crop(0,0,32,32),5,5,null);
 
-
-
+        g.drawImage(Assets.grass,10,10,null);
         bs.show();
         g.dispose();
     }
