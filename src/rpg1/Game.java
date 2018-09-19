@@ -1,12 +1,8 @@
 package rpg1;
 
 import rpg1.gfx.Assets;
-import rpg1.gfx.ImageLoader;
-import rpg1.gfx.SpriteSheet;
-
 import java.awt.*;
 import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
 
 public class Game implements Runnable {
 
