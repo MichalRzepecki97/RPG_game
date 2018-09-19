@@ -1,8 +1,11 @@
 package rpg1;
 
+import rpg1.controls.KeyMenager;
 import rpg1.gfx.Assets;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
+
+import static com.sun.java.accessibility.util.AWTEventMonitor.addKeyListener;
 
 public class Game implements Runnable {
 
@@ -14,22 +17,32 @@ public class Game implements Runnable {
 
     private BufferStrategy bs;
     private Graphics g;
+    //states
+    private State gameState;
+    private State menuState;
+    private KeyMenager keyMenager;
+    private Object KeyMenager;
+
 
     public Game( String Title, int Width, int Height){
         this.Height = Height;
         this.Width = Width;
         this.Title = Title;
+        keyMenager = new KeyMenager();
     }
 
     private void init(){
         display = new Display(Title,Width,Height);
+        display.getFrame().addKeyListener(keyMenager);
         Assets.init();
+
+        gameState = new GameState(this);
+        menuState = new MenuState(this);
+        State.setState(gameState);
     }
-    int x =0;
-
     private void tick(){
-        x += 1;
-
+        if (State.getState() != null )
+            State.getState().tick();
     }
     private void render(){
         bs = display.getCanvas().getBufferStrategy();
@@ -42,7 +55,9 @@ public class Game implements Runnable {
         g.clearRect(0,0,Width,Height);
         //draw
 
-        g.drawImage(Assets.dirt,x,10,null);
+        if (State.getState() != null )
+            State.getState().render(g);
+
         bs.show();
         g.dispose();
     }
@@ -80,6 +95,11 @@ public class Game implements Runnable {
         }
         stop();
     }
+    
+    public KeyMenager getKeyMenager(){
+        return (rpg1.controls.KeyMenager) KeyMenager;
+    }
+    
     public synchronized void start(){
         if(running)
             return;
