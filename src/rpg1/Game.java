@@ -21,7 +21,6 @@ public class Game implements Runnable {
     private State gameState;
     private State menuState;
     private KeyMenager keyMenager;
-    private Object KeyMenager;
 
 
     public Game( String Title, int Width, int Height){
@@ -41,8 +40,10 @@ public class Game implements Runnable {
         State.setState(gameState);
     }
     private void tick(){
+        keyMenager.tick();
         if (State.getState() != null )
             State.getState().tick();
+
     }
     private void render(){
         bs = display.getCanvas().getBufferStrategy();
@@ -95,9 +96,9 @@ public class Game implements Runnable {
         }
         stop();
     }
-    
+    //moze byc zle !!!!
     public KeyMenager getKeyMenager(){
-        return (rpg1.controls.KeyMenager) KeyMenager;
+        return keyMenager;
     }
     
     public synchronized void start(){

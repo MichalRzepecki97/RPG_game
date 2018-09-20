@@ -8,7 +8,7 @@ public class KeyMenager implements KeyListener {
     public boolean []keys;
     public boolean up,down,left,right;
 
-    public KeyMenager() {
+    public KeyMenager(){
         keys = new boolean[256];
     }
 
@@ -20,7 +20,7 @@ public class KeyMenager implements KeyListener {
     }
 
     @Override
-    public void keyTyped(KeyEvent e) {
+    public void keyTyped(KeyEvent e){
     }
 
     @Override
@@ -30,7 +30,7 @@ public class KeyMenager implements KeyListener {
     }
 
     @Override
-    public void keyReleased(KeyEvent e) {
+    public void keyReleased(KeyEvent e){
         keys[e.getKeyCode()] = false;
     }
 }
