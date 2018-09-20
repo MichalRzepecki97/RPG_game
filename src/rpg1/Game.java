@@ -96,7 +96,6 @@ public class Game implements Runnable {
         }
         stop();
     }
-    //moze byc zle !!!!
     public KeyMenager getKeyMenager(){
         return keyMenager;
     }
