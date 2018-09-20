@@ -2,6 +2,7 @@ package rpg1;
 
 
 import rpg1.entities.Player;
+import rpg1.tiles.Tile;
 
 import java.awt.*;
 
@@ -23,7 +24,7 @@ public class GameState extends State {
 
     @Override
     public void render(Graphics g) {
-
         player.render(g);
+        Tile.tiles[0].render(g,0,0);
     }
 }
