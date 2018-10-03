@@ -11,7 +11,7 @@ public class Tile {
     public static Tile dirtTile = new DirtTile(2);
 
 
-    public static  final int TILEWIDTH = 32, TILEHEIGHT = 32;
+    public static  final int TILEWIDTH = 80, TILEHEIGHT = 80;
 
     protected BufferedImage texture;
     protected final int id;
