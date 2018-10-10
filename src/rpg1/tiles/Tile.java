@@ -1,17 +1,18 @@
 package rpg1.tiles;
 
-import java.awt.*;
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 public class Tile {
 
     public static Tile[] tiles = new Tile[256];
     public static Tile grassTile = new GrassTile(0);
-    public static Tile rockTile = new RockTile(1);
-    public static Tile dirtTile = new DirtTile(2);
+    public static Tile dirtTile = new DirtTile( 1);
+    public static Tile rockTile = new RockTile(2);
+    public static Tile tree1Tile = new TreeTile(3);
+    public static Tile sandTile = new SandTile(4);
 
-
-    public static  final int TILEWIDTH = 80, TILEHEIGHT = 80;
+    public static  final int TILEWIDTH = 50, TILEHEIGHT = 50;
 
     protected BufferedImage texture;
     protected final int id;
