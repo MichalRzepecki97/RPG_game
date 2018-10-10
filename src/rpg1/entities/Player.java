@@ -7,11 +7,8 @@ import java.awt.*;
 
 public class Player extends Creature {
 
-    private Game game;
-
     public Player(Game game,float x, float y){
-        super(x, y,Creature.DEFAULT_CREATURE_HEIGHT,Creature.DEFAULT_CREATURE_WIDTH);
-        this. game = game;
+        super(game,x, y,Creature.DEFAULT_CREATURE_HEIGHT,Creature.DEFAULT_CREATURE_WIDTH);
     }
 
     @Override
@@ -26,6 +23,7 @@ public class Player extends Creature {
             x += 3;*/
       getInput();
       move();
+      game.getGameCamera().centerOnEntity(this);
     }
     private void getInput(){
         xMove = 0;
@@ -42,7 +40,9 @@ public class Player extends Creature {
     }
 
     @Override
-    public void render(Graphics g) {
-        g.drawImage(Assets.player,(int)x, (int)y, width, height,null);//konwersja do int
+    public void render(Graphics g)
+    {
+        g.drawImage(Assets.player,(int)(x - game.getGameCamera().getxOffset()),
+                                  (int)(y - game.getGameCamera().getyOffset()), width, height,null);//konwersja do int
     }
 }

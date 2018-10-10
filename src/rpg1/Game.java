@@ -2,15 +2,15 @@ package rpg1;
 
 import rpg1.controls.KeyMenager;
 import rpg1.gfx.Assets;
+import rpg1.gfx.GameCamera;
+
 import java.awt.*;
 import java.awt.image.BufferStrategy;
-
-import static com.sun.java.accessibility.util.AWTEventMonitor.addKeyListener;
 
 public class Game implements Runnable {
 
     private Display display;
-    public int Width, Height;
+    private int Width, Height;
     public String Title;
     private boolean running = false;
     private Thread thread;
@@ -20,8 +20,11 @@ public class Game implements Runnable {
     //states
     private State gameState;
     private State menuState;
+    //input
     private KeyMenager keyMenager;
 
+    //camera
+    private GameCamera gameCamera;
 
     public Game( String Title, int Width, int Height){
         this.Height = Height;
@@ -35,6 +38,7 @@ public class Game implements Runnable {
         display.getFrame().addKeyListener(keyMenager);
         Assets.init();
 
+        gameCamera = new GameCamera(this,0,0);
         gameState = new GameState(this);
         menuState = new MenuState(this);
         State.setState(gameState);
@@ -98,6 +102,15 @@ public class Game implements Runnable {
     }
     public KeyMenager getKeyMenager(){
         return keyMenager;
+    }
+    public GameCamera getGameCamera(){
+        return gameCamera;
+    }
+    public int getWidth (){
+        return Width;
+    }
+    public int getHeight (){
+        return Height;
     }
     
     public synchronized void start(){

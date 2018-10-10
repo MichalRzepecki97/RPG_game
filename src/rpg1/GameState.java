@@ -16,8 +16,9 @@ public class GameState extends State {
 
     public GameState(Game game ) {
         super(game);
+        //zmiana widoku kamery
         player = new Player(game,100,100);
-        world= new World("res/worlds/world1.txt");
+        world= new World(game,"res/worlds/world1.txt");
     }
 
     @Override
