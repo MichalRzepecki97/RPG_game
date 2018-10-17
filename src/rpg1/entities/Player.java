@@ -1,14 +1,14 @@
 package rpg1.entities;
 
-import rpg1.Game;
+import rpg1.Handler;
 import rpg1.gfx.Assets;
 
 import java.awt.*;
 
 public class Player extends Creature {
 
-    public Player(Game game,float x, float y){
-        super(game,x, y,Creature.DEFAULT_CREATURE_HEIGHT,Creature.DEFAULT_CREATURE_WIDTH);
+    public Player(Handler handler, float x, float y){
+        super(handler,x, y,Creature.DEFAULT_CREATURE_HEIGHT,Creature.DEFAULT_CREATURE_WIDTH);
     }
 
     @Override
@@ -23,18 +23,18 @@ public class Player extends Creature {
             x += 3;*/
       getInput();
       move();
-      game.getGameCamera().centerOnEntity(this);
+      handler.getGameCamera().centerOnEntity(this);
     }
     private void getInput(){
         xMove = 0;
         yMove = 0;
-        if(game.getKeyMenager().up)
+        if(handler.getKeyMenager().up)
             yMove= -moveSpeed;
-        if(game.getKeyMenager().down)
+        if(handler.getKeyMenager().down)
             yMove= moveSpeed;
-        if(game.getKeyMenager().left)
+        if(handler.getKeyMenager().left)
             xMove= -moveSpeed;
-        if(game.getKeyMenager().right)
+        if(handler.getKeyMenager().right)
             xMove= moveSpeed;
 
     }
@@ -42,7 +42,7 @@ public class Player extends Creature {
     @Override
     public void render(Graphics g)
     {
-        g.drawImage(Assets.player,(int)(x - game.getGameCamera().getxOffset()),
-                                  (int)(y - game.getGameCamera().getyOffset()), width, height,null);//konwersja do int
+        g.drawImage(Assets.hero,(int)(x - handler.getGameCamera().getxOffset()),
+                                  (int)(y - handler.getGameCamera().getyOffset()), width, height,null);//konwersja do int
     }
 }

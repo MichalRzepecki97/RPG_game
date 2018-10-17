@@ -12,7 +12,7 @@ public class Tile {
     public static Tile tree1Tile = new TreeTile(3);
     public static Tile sandTile = new SandTile(4);
 
-    public static  final int TILEWIDTH = 50, TILEHEIGHT = 50;
+    public static  final int TILEWIDTH = 60, TILEHEIGHT = 60;
 
     protected BufferedImage texture;
     protected final int id;

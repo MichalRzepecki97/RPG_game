@@ -1,6 +1,7 @@
 package rpg1.entities;
 
 import rpg1.Game;
+import rpg1.Handler;
 
 public abstract class Creature extends Entity {
 
@@ -14,8 +15,8 @@ public abstract class Creature extends Entity {
     protected float moveSpeed;
     protected float xMove,yMove;
 
-    public Creature(Game game,float x, float y, int width, int height) {
-        super(game, x, y,width,height);
+    public Creature(Handler handler, float x, float y, int width, int height) {
+        super(handler, x, y,width,height);
         health = DEFAULT_HEALTH;
         moveSpeed = DEFAULT_SPEED;
     }

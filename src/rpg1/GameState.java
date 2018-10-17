@@ -14,11 +14,13 @@ public class GameState extends State {
     private World world;
 
 
-    public GameState(Game game ) {
-        super(game);
+    public GameState(Handler handler ) {
+        super(handler);
         //zmiana widoku kamery
-        player = new Player(game,100,100);
-        world= new World(game,"res/worlds/world1.txt");
+        world= new World(handler,"res/worlds/world1.txt");
+        handler.setWorld(world);
+        player = new Player(handler,100,100);
+
     }
 
     @Override
