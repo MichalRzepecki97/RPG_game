@@ -1,7 +1,7 @@
 package rpg1.entities;
 
-import rpg1.Game;
 import rpg1.Handler;
+import rpg1.tiles.Tile;
 
 public abstract class Creature extends Entity {
 
@@ -22,10 +22,57 @@ public abstract class Creature extends Entity {
     }
 
     public void move(){
-        x += xMove;
-        y += yMove;
+        moveX();
+        moveY();
     }
 
+    public void moveX(){
+        if (xMove > 0){// move right
+            int xx = (int)(x + xMove + bounds.x + bounds.width)/ Tile.TILEWIDTH;
+
+            if(!collisionWithSolidObject(xx,(int) (y+ bounds.y)/ Tile.TILEHEIGHT)&&
+            !collisionWithSolidObject(xx,(int)(y + bounds.y + bounds. height)/Tile.TILEHEIGHT)){
+            x+= xMove;
+            }else{
+                x = xx * Tile.TILEWIDTH - bounds.x - bounds.width -1;
+            }
+
+        }else if (xMove < 0){//left
+            int xx = (int)(x + xMove + bounds.x)/ Tile.TILEWIDTH;
+            if(!collisionWithSolidObject(xx,(int) (y+ bounds.y)/ Tile.TILEHEIGHT)&&
+                    !collisionWithSolidObject(xx,(int)(y + bounds.y + bounds. height)/Tile.TILEHEIGHT)){
+                x += xMove;
+            }else {
+                x =xx *Tile.TILEWIDTH + Tile.TILEWIDTH  - bounds.x;
+            }
+
+        }
+    }
+
+    public void moveY(){//Up
+        if(yMove<0){
+            int ty = (int)(y + yMove + bounds.y)/Tile.TILEWIDTH;
+
+            if(!collisionWithSolidObject((int)(x+ bounds.x)/Tile.TILEHEIGHT,ty)&&
+                    !collisionWithSolidObject((int)(x+ bounds.x+ bounds.width)/Tile.TILEHEIGHT,ty)){
+                y += yMove;
+            }else {
+                y = ty *Tile.TILEHEIGHT +Tile.TILEHEIGHT -bounds.y;
+            }
+        }else if (yMove > 0){//Down
+            int ty = (int)(y + yMove + bounds.y + bounds.height)/Tile.TILEWIDTH;
+
+            if(!collisionWithSolidObject((int)(x+ bounds.x)/Tile.TILEHEIGHT,ty)&&
+                    !collisionWithSolidObject((int)(x+ bounds.x+ bounds.width)/Tile.TILEHEIGHT,ty)){
+                y += yMove;
+            }else{
+                y= ty * Tile.TILEHEIGHT - bounds.y - bounds.height - 1;
+            }
+        }
+    }
+    protected boolean collisionWithSolidObject(int x, int y){
+        return handler. getWorld().getTile(x,y).isSolid();
+    }
 
     public int getHealth() {
         return health;

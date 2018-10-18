@@ -1,8 +1,6 @@
 package rpg1.entities;
 
-import rpg1.Game;
 import rpg1.Handler;
-
 import java.awt.*;
 
 public abstract class Entity {
@@ -10,13 +8,15 @@ public abstract class Entity {
     protected Handler handler;
     protected int width,height;
     protected float x, y;
+    protected Rectangle bounds;
+
      public Entity ( Handler handler,float x, float y, int width, int height){
          this.handler = handler;
          this.x = x;
          this.y = y;
          this.height = height;
          this.width = width;
-
+         bounds = new Rectangle(0,0,width,height);
      }
      public abstract void tick();
 

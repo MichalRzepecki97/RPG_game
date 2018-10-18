@@ -36,13 +36,16 @@ public class World {
         }
     }
     public Tile getTile(int x, int y){
+       //renderwoanie poza mapa
+        if(x<0 || y<0 || x >= width || y >= height)
+            return Tile.grassTile;
+
         Tile t = Tile.tiles[tiles[x][y]];
         if (t == null)
             return Tile.dirtTile;
         return  t;
 
     }
-
     private void loadWorld(String path){
         String file = Utils.loadFileAsString(path);
         String [] tokens  = file.split("\\s+");
