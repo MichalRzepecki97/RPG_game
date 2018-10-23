@@ -40,8 +40,10 @@ public class Game implements Runnable {
         display.getFrame().addKeyListener(keyMenager);
         Assets.init();
 
-        gameCamera = new GameCamera(this,0,0);
+
         handler = new Handler(this);
+        gameCamera = new GameCamera(handler,0,0);
+
         gameState = new GameState(handler);
         menuState = new MenuState(handler);
         State.setState(gameState);
@@ -126,6 +128,7 @@ public class Game implements Runnable {
     }
     public synchronized void stop(){
         if (!running)
+            //catch exception
         running = false;
         try {
             thread.join();

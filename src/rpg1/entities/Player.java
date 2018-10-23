@@ -1,11 +1,15 @@
 package rpg1.entities;
 
 import rpg1.Handler;
+import rpg1.gfx.Animation;
 import rpg1.gfx.Assets;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public class Player extends Creature {
+
+    private Animation animationDown,animationUp,animationRight,animationLeft;
 
     public Player(Handler handler, float x, float y){
         super(handler,x, y,Creature.DEFAULT_CREATURE_HEIGHT,Creature.DEFAULT_CREATURE_WIDTH);
@@ -14,8 +18,13 @@ public class Player extends Creature {
         bounds.y = 40;
         bounds.height = 50;
         bounds.width = 40;
-
+//długość animiacji
+        animationDown = new Animation(500,Assets.heroAnimationDown);
+        animationUp = new Animation(500,Assets.heroAnimationUp);
+        animationLeft = new Animation(500,Assets.heroAnimationLeft);
+        animationRight = new Animation(500,Assets.heroAnimationRight);
     }
+
 
     @Override
     public void tick() {
@@ -27,6 +36,10 @@ public class Player extends Creature {
             x -= 3;
         if (game.getKeyMenager().right)
             x += 3;*/
+      animationDown.tick();
+      animationUp.tick();
+      animationLeft.tick();
+      animationRight.tick();
       getInput();
       move();
       handler.getGameCamera().centerOnEntity(this);
@@ -48,12 +61,22 @@ public class Player extends Creature {
     @Override
     public void render(Graphics g)
     {
-        g.drawImage(Assets.hero,(int)(x - handler.getGameCamera().getxOffset()),
+        g.drawImage(animationDown.CurrentFrame(),(int)(x - handler.getGameCamera().getxOffset()),
                                   (int)(y - handler.getGameCamera().getyOffset()), width, height,null);//konwersja do int
    // g.setColor (Color.RED);
     //g.fillRect((int)(x + bounds.x - handler.getGameCamera().getxOffset()),
       //  (int)(y + bounds.y - handler.getGameCamera().getyOffset()),
         //bounds.width,bounds.height);*/
     
+    }
+    private BufferedImage CurrentAnimationFrame(){
+      if (xMove<0){
+          return animationLeft.CurrentFrame();
+       }else if (xMove>0){
+          return animationRight.CurrentFrame();
+       }else if (yMove<0){
+          return animationUp.CurrentFrame();
+      }else
+          {return animationDown.CurrentFrame();}
     }
 }

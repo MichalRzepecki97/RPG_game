@@ -5,21 +5,43 @@ import java.awt.image.BufferedImage;
 public class Assets {
     private static final  int width = 58, height =58;
     private static final  int heroWidth = 60, heroHeight =80;
-    public static BufferedImage sand, player, dirt, grass, stone, tree, hero;
+
+
+    public static BufferedImage sand, player, dirt, grass, stone, tree;
+    public static BufferedImage[] heroAnimationDown,heroAnimationUp,heroAnimationLeft,heroAnimationRight;
+
 
     public static void init(){
-        SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("/textures/sheet1.png"));
+        SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("/textures/Sheet1.png"));
+        SpriteSheet HeroSheet = new SpriteSheet(ImageLoader.loadImage("/textures/heroSheet.png"));
+
+        heroAnimationDown = new BufferedImage[2];
+        heroAnimationUp = new BufferedImage[2];
+        heroAnimationLeft = new BufferedImage[2];
+        heroAnimationRight = new BufferedImage[2];
+
+// TODO
+        heroAnimationDown[0] = HeroSheet.crop(0,0 ,heroHeight,heroWidth);
+        heroAnimationDown[1] = HeroSheet.crop(heroHeight,width,heroWidth ,heroHeight );
+
+        heroAnimationUp[0] = HeroSheet.crop(0,60,heroWidth,heroHeight);
+        heroAnimationUp[1] = HeroSheet.crop(0,0,heroWidth,heroHeight);
+
+        heroAnimationLeft[0] = HeroSheet.crop(0,0,heroWidth,heroHeight);
+        heroAnimationLeft[1] = HeroSheet.crop(0,0,heroWidth,heroHeight);
+
+        heroAnimationRight[0] = HeroSheet.crop(0,0,heroWidth,heroHeight);
+        heroAnimationRight[1] = HeroSheet.crop(0,0,heroWidth,heroHeight);
+
 
         grass = sheet.crop(0,0, height,height);
         dirt = sheet.crop(0,height, width,height);
         stone  = sheet.crop(width * 2,0,width,height);
-        player = sheet.crop(width * 3,0,width,height);
+        //player = sheet.crop(width * 3,0,width,height);
         tree = sheet.crop(width * 4,0,width,height);
         sand = sheet.crop(width * 5,0,width,height);
         // TODO
-        SpriteSheet sheet1 = new SpriteSheet(ImageLoader.loadImage("/textures/heroSheet.png"));
 
-        hero = sheet1.crop(0,heroHeight ,heroHeight,heroWidth);
     }
 
 }
