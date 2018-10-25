@@ -16,22 +16,22 @@ public class Assets {
         SpriteSheet HeroSheet = new SpriteSheet(ImageLoader.loadImage("/textures/heroSheet.png"));
 
         heroAnimationDown = new BufferedImage[2];
-        heroAnimationUp = new BufferedImage[2];
-        heroAnimationLeft = new BufferedImage[2];
-        heroAnimationRight = new BufferedImage[2];
+        heroAnimationUp = new BufferedImage[1];
+        heroAnimationLeft = new BufferedImage[1];
+        heroAnimationRight = new BufferedImage[1];
 
 // TODO
-        heroAnimationDown[0] = HeroSheet.crop(0,0 ,heroHeight,heroWidth);
-        heroAnimationDown[1] = HeroSheet.crop(heroHeight,width,heroWidth ,heroHeight );
+        heroAnimationDown[0] = HeroSheet.crop(111,640,heroHeight,heroWidth);
+        heroAnimationDown[1] = HeroSheet.crop(178,640,heroHeight ,heroWidth );
 
-        heroAnimationUp[0] = HeroSheet.crop(0,60,heroWidth,heroHeight);
-        heroAnimationUp[1] = HeroSheet.crop(0,0,heroWidth,heroHeight);
+        heroAnimationUp[0] = HeroSheet.crop(heroWidth *2 ,0 ,width,heroWidth);
+       // heroAnimationUp[1] = HeroSheet.crop(0,0,heroWidth,heroHeight);
 
         heroAnimationLeft[0] = HeroSheet.crop(0,0,heroWidth,heroHeight);
-        heroAnimationLeft[1] = HeroSheet.crop(0,0,heroWidth,heroHeight);
+       // heroAnimationLeft[1] = HeroSheet.crop(0,0,heroWidth,heroHeight);
 
         heroAnimationRight[0] = HeroSheet.crop(0,0,heroWidth,heroHeight);
-        heroAnimationRight[1] = HeroSheet.crop(0,0,heroWidth,heroHeight);
+       // heroAnimationRight[1] = HeroSheet.crop(0,0,heroWidth,heroHeight);
 
 
         grass = sheet.crop(0,0, height,height);
