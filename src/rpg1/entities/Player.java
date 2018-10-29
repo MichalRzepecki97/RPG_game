@@ -21,8 +21,8 @@ public class Player extends Creature {
 //długość animiacji
         animationDown = new Animation(500,Assets.heroAnimationDown);
         animationUp = new Animation(500,Assets.heroAnimationUp);
-        animationLeft = new Animation(500,Assets.heroAnimationLeft);
-        animationRight = new Animation(500,Assets.heroAnimationRight);
+        animationLeft = new Animation(200,Assets.heroAnimationLeft);
+        animationRight = new Animation(200,Assets.heroAnimationRight);
     }
 
 
@@ -61,7 +61,7 @@ public class Player extends Creature {
     @Override
     public void render(Graphics g)
     {
-        g.drawImage(animationDown.CurrentFrame(),(int)(x - handler.getGameCamera().getxOffset()),
+        g.drawImage(CurrentAnimationFrame(),(int)(x - handler.getGameCamera().getxOffset()),
                                   (int)(y - handler.getGameCamera().getyOffset()), width, height,null);//konwersja do int
    // g.setColor (Color.RED);
     //g.fillRect((int)(x + bounds.x - handler.getGameCamera().getxOffset()),
@@ -76,7 +76,10 @@ public class Player extends Creature {
           return animationRight.CurrentFrame();
        }else if (yMove<0){
           return animationUp.CurrentFrame();
-      }else
-          {return animationDown.CurrentFrame();}
+       }else{
+          return animationDown.CurrentFrame();
+      }
     }
+
+
 }

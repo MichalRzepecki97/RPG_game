@@ -12,16 +12,17 @@ public class Animation {
         this.frames = frames;
         idx = 0;
         timer = 0;
-        lastTime = System.currentTimeMillis();
+        lastTime = System.currentTimeMillis(); //check
+
     }
     public void tick(){
-        timer+=System.currentTimeMillis() - lastTime;
+        timer += System.currentTimeMillis() - lastTime;
         lastTime = System.currentTimeMillis();
 
         if (timer>speed){
             idx++;
             timer = 0;
-            if (idx >=frames.length)
+            if (idx>=frames.length)
                 idx = 0;
         }
     }
