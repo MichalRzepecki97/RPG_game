@@ -9,7 +9,7 @@ import java.awt.image.BufferedImage;
 
 public class Player extends Creature {
 
-    private Animation animationDown,animationUp,animationRight,animationLeft;
+    private Animation animationDown,animationUp,animationRight,animationLeft,animationStay;
 
     public Player(Handler handler, float x, float y){
         super(handler,x, y,Creature.DEFAULT_CREATURE_HEIGHT,Creature.DEFAULT_CREATURE_WIDTH);
@@ -23,6 +23,8 @@ public class Player extends Creature {
         animationUp = new Animation(500,Assets.heroAnimationUp);
         animationLeft = new Animation(200,Assets.heroAnimationLeft);
         animationRight = new Animation(200,Assets.heroAnimationRight);
+        //dokonczyc
+        //animationStay = new Animation(500,Assets.stayAnimation);
     }
 
 
@@ -78,7 +80,7 @@ public class Player extends Creature {
           return animationUp.CurrentFrame();
        }else{
           return animationDown.CurrentFrame();
-      }
+      }//TODO
     }
 
 

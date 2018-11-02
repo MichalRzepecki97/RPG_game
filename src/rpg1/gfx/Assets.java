@@ -8,17 +8,19 @@ public class Assets {
 
 
     public static BufferedImage sand, player, dirt, grass, stone, tree;
-    public static BufferedImage[] heroAnimationDown,heroAnimationUp,heroAnimationLeft,heroAnimationRight;
+    public static BufferedImage[] heroAnimationDown,heroAnimationUp,heroAnimationLeft,heroAnimationRight,stayAnimation;
 
 
     public static void init(){
         SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("/textures/Sheet1.png"));
         SpriteSheet HeroSheet = new SpriteSheet(ImageLoader.loadImage("/textures/heroSheet.png"));
+        SpriteSheet StaticsSheet = new SpriteSheet(ImageLoader.loadImage("/textures/Statics.png"));
 
         heroAnimationDown = new BufferedImage[2];
         heroAnimationUp = new BufferedImage[2];
         heroAnimationLeft = new BufferedImage[8];
         heroAnimationRight = new BufferedImage[8];
+        stayAnimation = new BufferedImage[2];
 
 // TODO
         heroAnimationDown[0] = HeroSheet.crop(111,640,heroHeight,heroWidth);
@@ -45,11 +47,15 @@ public class Assets {
         heroAnimationRight[6] = HeroSheet.crop(440,710,heroHeight,heroWidth);
         heroAnimationRight[7] = HeroSheet.crop(500,710,heroHeight,heroWidth);
 
+
+        //stayAnimation[0] = HeroSheet.crop();
+        //stayAnimation[1] = HeroSheet.crop();
+
         grass = sheet.crop(0,0, height,height);
         dirt = sheet.crop(0,height, width,height);
         stone  = sheet.crop(width * 2,0,width,height);
         //player = sheet.crop(width * 3,0,width,height);
-        tree = sheet.crop(width * 4,0,width,height);
+        tree = StaticsSheet.crop(0,0,225,225);
         sand = sheet.crop(width * 5,0,width,height);
         // TODO
 
