@@ -2,8 +2,6 @@ package rpg1;
 
 
 
-import rpg1.entities.Player;
-import rpg1.entities.statics.Wood;
 import rpg1.map.World;
 import rpg1.tiles.Tile;
 

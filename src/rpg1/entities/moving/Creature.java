@@ -1,6 +1,7 @@
-package rpg1.entities;
+package rpg1.entities.moving;
 
 import rpg1.Handler;
+import rpg1.entities.Entity;
 import rpg1.tiles.Tile;
 
 public abstract class Creature extends Entity {
@@ -22,8 +23,10 @@ public abstract class Creature extends Entity {
     }
 
     public void move(){
-        moveX();
-        moveY();
+        if (!checkEntityCollision(xMove,0f))
+            moveX();
+        if (!checkEntityCollision(0f,yMove))
+            moveY();
     }
 
     public void moveX(){

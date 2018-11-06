@@ -2,7 +2,7 @@ package rpg1.map;
 
 import rpg1.Handler;
 import rpg1.entities.Menager;
-import rpg1.entities.Player;
+import rpg1.entities.moving.Player;
 import rpg1.entities.statics.Wood;
 import rpg1.tiles.Tile;
 import rpg1.utils.Utils;
@@ -18,9 +18,17 @@ public class World {
     //Menago
     private Menager menager;
 
+    public Menager getMenager() {
+        return menager;
+    }
+
+    public void setMenager(Menager menager) {
+        this.menager = menager;
+    }
+
     public World(Handler handler, String path){
         this.handler = handler;
-        menager = new Menager(handler,new Player(handler,100,150));
+        menager = new Menager(handler,new Player(handler,500,500));
         menager.addEntityToList(new Wood(handler,100,200));
         loadWorld(path);
 

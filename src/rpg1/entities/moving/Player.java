@@ -1,6 +1,7 @@
-package rpg1.entities;
+package rpg1.entities.moving;
 
 import rpg1.Handler;
+import rpg1.entities.moving.Creature;
 import rpg1.gfx.Animation;
 import rpg1.gfx.Assets;
 
@@ -14,11 +15,7 @@ public class Player extends Creature {
     public Player(Handler handler, float x, float y){
         super(handler,x, y,Creature.DEFAULT_CREATURE_HEIGHT,Creature.DEFAULT_CREATURE_WIDTH);
 
-        bounds.x =40;
-        bounds.y = 40;
-        bounds.height = 50;
-        bounds.width = 40;
-//długość animiacji
+     //długość animiacji
         animationDown = new Animation(500,Assets.heroAnimationDown);
         animationUp = new Animation(500,Assets.heroAnimationUp);
         animationLeft = new Animation(200,Assets.heroAnimationLeft);

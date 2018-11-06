@@ -1,6 +1,7 @@
 package rpg1.entities;
 
 import rpg1.Handler;
+import rpg1.entities.moving.Player;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -8,27 +9,27 @@ import java.util.ArrayList;
 public class Menager {
     private Handler handler;
     private Player player;
-    private ArrayList<Entity>entities;
+    private ArrayList<Entity> entities;
 
 
     public Menager(Handler handler,Player player){
         this.handler = handler;
         this.player = player;
         entities = new ArrayList<Entity>();
+        addEntityToList(player);
+
     }
     public void tick(){
         for (int i = 0; i <entities.size() ; i++) {
             Entity entity = entities.get(i);
             entity.tick();
         }
-        player.tick();
     }
     public void render(Graphics g){
 
         for (Entity entity : entities){
          entity.render(g);
         }
-        player.render(g);
     }
 
     public void addEntityToList(Entity entity){
